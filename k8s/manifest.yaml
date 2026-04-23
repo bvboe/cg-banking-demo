@@ -59,7 +59,7 @@ spec:
           emptyDir: {}
       containers:
         - name: postgres
-          image: banking-postgres:v1
+          image: banking-postgres:v2
           imagePullPolicy: Never
           ports:
             - containerPort: 5432
@@ -132,7 +132,7 @@ spec:
     spec:
       containers:
         - name: banking-app
-          image: banking-app:v1
+          image: banking-app:v2
           imagePullPolicy: Never
           ports:
             - containerPort: 3000
@@ -193,7 +193,7 @@ spec:
     spec:
       containers:
         - name: banking-worker
-          image: banking-worker:v1
+          image: banking-worker:v2
           imagePullPolicy: Never
           envFrom:
             - secretRef:
