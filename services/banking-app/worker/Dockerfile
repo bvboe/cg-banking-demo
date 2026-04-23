@@ -20,10 +20,4 @@ ENV PYTHONUNBUFFERED=1
 
 COPY app.py .
 
-# Extra runtime dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    bash \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
 ENTRYPOINT ["python", "app.py"]
