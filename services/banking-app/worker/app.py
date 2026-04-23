@@ -17,4 +17,4 @@ def run_once() -> None:
 if __name__ == "__main__":
     while True:
         run_once()
-        time.sleep(60)
+        time.sleep(5)

@@ -1,19 +1,22 @@
 FROM python:3.14-slim AS builder
 
 ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
 
-WORKDIR /build
+WORKDIR /app
+
+RUN python -m venv venv
+ENV PATH="/app/venv/bin:$PATH"
 
 COPY requirements.txt .
-
-RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 FROM python:3.14-slim
 
 WORKDIR /app
 
-COPY --from=builder /install /usr/local
+COPY --from=builder /app/venv /app/venv
+ENV PATH="/app/venv/bin:$PATH"
+ENV PYTHONUNBUFFERED=1
 
 COPY app.py .
 
@@ -23,4 +26,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-CMD ["python", "app.py"]
+ENTRYPOINT ["python", "app.py"]
