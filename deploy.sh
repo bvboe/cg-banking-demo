@@ -3,7 +3,7 @@
 # Usage: ./deploy.sh [namespace]  (default namespace: banking-demo)
 set -euo pipefail
 
-VERSION="v1"
+VERSION="v2"
 NAMESPACE="${1:-banking-demo}"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"

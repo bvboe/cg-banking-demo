@@ -2,7 +2,7 @@
 # Build all service images for this branch and load them into kind.
 set -euo pipefail
 
-VERSION="v1"
+VERSION="v2"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
